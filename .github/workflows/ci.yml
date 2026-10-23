@@ -1,0 +1,38 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  core-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+      - name: Build core solution (zero external packages)
+        run: dotnet build FlashRepairAgent.sln -c Release
+      - name: Run test harness
+        run: ./src/FlashRepair.Tests/bin/Release/net8.0/flashrepair-tests
+      - name: Run diagnosis demo on recorded faulty samples
+        run: ./src/FlashRepair.Cli/bin/Release/net8.0/flashrepair demo --out demo-reports
+
+  windows-app:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+      - name: Build Windows solution (incl. WPF app)
+        run: dotnet build FlashRepairAgent.Windows.sln -c Release
+      - name: Run test harness
+        run: ./src/FlashRepair.Tests/bin/Release/net8.0/flashrepair-tests.exe
+      - name: Publish CLI (win-x64)
+        run: dotnet publish src/FlashRepair.Cli -c Release -r win-x64 --self-contained false -o publish/win-x64
+      - uses: actions/upload-artifact@v4
+        with:
+          name: flashrepair-cli-win-x64
+          path: publish/win-x64
