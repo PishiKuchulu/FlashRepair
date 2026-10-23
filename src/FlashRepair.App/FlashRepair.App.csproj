@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>FlashRepair.App</RootNamespace>
+    <AssemblyName>FlashRepairAgent</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FlashRepair.Core\FlashRepair.Core.csproj" />
+    <ProjectReference Include="..\FlashRepair.Tools\FlashRepair.Tools.csproj" />
+    <ProjectReference Include="..\FlashRepair.SafetyGate\FlashRepair.SafetyGate.csproj" />
+    <ProjectReference Include="..\FlashRepair.ModelProvider\FlashRepair.ModelProvider.csproj" />
+    <ProjectReference Include="..\FlashRepair.Agent\FlashRepair.Agent.csproj" />
+    <ProjectReference Include="..\FlashRepair.Backends.Virtual\FlashRepair.Backends.Virtual.csproj" />
+    <ProjectReference Include="..\FlashRepair.Backends.Windows\FlashRepair.Backends.Windows.csproj" />
+  </ItemGroup>
+</Project>

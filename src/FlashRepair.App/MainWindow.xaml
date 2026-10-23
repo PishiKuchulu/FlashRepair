@@ -1,0 +1,42 @@
+<Window x:Class="FlashRepair.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Flash Repair Agent — Phase 1 (Diagnosis)" Height="560" Width="880"
+        FlowDirection="LeftToRight">
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="180" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8">
+            <Button x:Name="RefreshButton" Content="Refresh devices" Padding="12,5" Click="Refresh_Click" />
+            <CheckBox x:Name="SimulatedCheck" Content="Simulated devices (demo)" Margin="16,4,0,0"
+                      Checked="Simulated_Changed" Unchecked="Simulated_Changed" />
+            <TextBlock x:Name="StatusText" Margin="16,4,0,0" Foreground="Gray" />
+        </StackPanel>
+
+        <ListView x:Name="DeviceList" Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Device" Width="300" DisplayMemberBinding="{Binding Model}" />
+                    <GridViewColumn Header="Serial" Width="160" DisplayMemberBinding="{Binding Serial}" />
+                    <GridViewColumn Header="Capacity (bytes)" Width="150" DisplayMemberBinding="{Binding DeclaredCapacityBytes}" />
+                    <GridViewColumn Header="Bus" Width="80" DisplayMemberBinding="{Binding BusType}" />
+                    <GridViewColumn Header="Id" Width="170" DisplayMemberBinding="{Binding DeviceId}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,8,0,8">
+            <Button x:Name="DiagnoseButton" Content="Diagnose selected (read-only)" Padding="12,5" Click="Diagnose_Click" />
+            <TextBlock x:Name="VerdictText" Margin="16,4,0,0" FontWeight="Bold" />
+        </StackPanel>
+
+        <TextBox x:Name="ReportBox" Grid.Row="3" IsReadOnly="True" AcceptsReturn="True"
+                 VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                 FontFamily="Consolas" FontSize="12" TextWrapping="NoWrap" />
+    </Grid>
+</Window>
