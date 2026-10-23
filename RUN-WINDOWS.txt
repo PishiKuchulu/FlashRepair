@@ -1,0 +1,18 @@
+ایجنت تعمیر فلش — فاز ۱ (فقط عیب‌یابی و گزارش، هیچ نوشتنی روی فلش انجام نمی‌شود)
+
+پیش‌نیاز: ویندوز ۱۰/۱۱ + دات‌نت ۸ ران‌تایم (Desktop Runtime برای نسخه گرافیکی)
+اجرا: برای دیدن فلش واقعی، برنامه را با دسترسی مدیر سیستم (Run as administrator) اجرا کنید.
+
+نسخه خط فرمان (پوشه cli):
+  flashrepair.exe devices
+  flashrepair.exe diagnose --device <DEVICE_ID> --out reports
+  flashrepair.exe demo
+
+نسخه گرافیکی (پوشه app):
+  FlashRepairAgent.exe را اجرا کنید، دستگاه را انتخاب کنید و دکمه عیب‌یابی را بزنید.
+  برای دیدن نمونه‌های مجازی خراب، تیک Simulated devices را بزنید.
+
+اتصال مدل خودتان (اختیاری — عیب‌یابی بدون مدل هم کامل کار می‌کند):
+  یک فایل model.json بسازید: {"baseUrl":"https://.../v1","model":"...","apiKey":"..."}
+  یا کلید را در متغیر محیطی FRA_API_KEY بگذارید و apiKey را خالی بگذارید.
+  flashrepair.exe model-test --model model.json

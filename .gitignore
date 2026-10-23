@@ -1,0 +1,8 @@
+bin/
+obj/
+*.user
+.dotnet/
+reports/
+demo-reports/
+publish/
+model.json
