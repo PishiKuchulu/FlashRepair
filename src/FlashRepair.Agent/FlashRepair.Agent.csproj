@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>FlashRepair.Agent</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FlashRepair.Core\FlashRepair.Core.csproj" />
+    <ProjectReference Include="..\FlashRepair.Tools\FlashRepair.Tools.csproj" />
+    <ProjectReference Include="..\FlashRepair.SafetyGate\FlashRepair.SafetyGate.csproj" />
+    <ProjectReference Include="..\FlashRepair.ModelProvider\FlashRepair.ModelProvider.csproj" />
+  </ItemGroup>
+</Project>
